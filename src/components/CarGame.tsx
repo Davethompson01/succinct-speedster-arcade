@@ -32,10 +32,12 @@ const GameBoard = ({ size = 10 }: { size?: number }) => {
     if (!gameStarted) return;
     
     const newObstacleX = Math.floor(Math.random() * size);
-    const newObstacle = { 
+    const moveDir: 'left' | 'right' = Math.random() > 0.5 ? 'left' : 'right';
+    
+    const newObstacle: Obstacle = { 
       id: obstacleIdRef.current++, 
       position: { x: newObstacleX, y: 0 },
-      moveDirection: Math.random() > 0.5 ? 'left' : 'right'
+      moveDirection: moveDir
     };
     
     setObstacles(prev => [...prev, newObstacle]);
