@@ -31,16 +31,16 @@ const GameControls = ({ onMove, onStart, onReset, gameStarted, score }: GameCont
 
   return (
     <div 
-      className="mt-4 flex flex-col items-center space-y-6"
+      className="mt-6 flex flex-col items-center space-y-6 w-full"
       tabIndex={0} 
       onKeyDown={handleKeyDown}
     >
-      <div className="text-xl font-bold">Score: {score}</div>
+      <div className="text-2xl font-bold">Score: {score}</div>
       
       {!gameStarted ? (
         <Button 
           onClick={onStart}
-          className="bg-accent hover:bg-accent/80 text-white"
+          className="bg-accent hover:bg-accent/80 text-white px-8 py-6 text-lg h-auto"
         >
           Start Game
         </Button>
@@ -48,7 +48,7 @@ const GameControls = ({ onMove, onStart, onReset, gameStarted, score }: GameCont
         <Button 
           onClick={onReset}
           variant="outline"
-          className="border-destructive text-destructive hover:bg-destructive/10"
+          className="border-destructive text-destructive hover:bg-destructive/10 px-8 py-2"
         >
           Reset Game
         </Button>
@@ -56,12 +56,12 @@ const GameControls = ({ onMove, onStart, onReset, gameStarted, score }: GameCont
       
       {gameStarted && (
         <>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-3 gap-3 w-full max-w-xs">
             <div></div>
             <Button 
               variant="secondary"
               onClick={() => onMove('up')}
-              className="aspect-square"
+              className="aspect-square w-16 h-16 text-2xl"
             >
               ↑
             </Button>
@@ -70,7 +70,7 @@ const GameControls = ({ onMove, onStart, onReset, gameStarted, score }: GameCont
             <Button 
               variant="secondary"
               onClick={() => onMove('left')}
-              className="aspect-square"
+              className="aspect-square w-16 h-16 text-2xl"
             >
               ←
             </Button>
@@ -78,7 +78,7 @@ const GameControls = ({ onMove, onStart, onReset, gameStarted, score }: GameCont
             <Button 
               variant="secondary"
               onClick={() => onMove('down')}
-              className="aspect-square"
+              className="aspect-square w-16 h-16 text-2xl"
             >
               ↓
             </Button>
@@ -86,7 +86,7 @@ const GameControls = ({ onMove, onStart, onReset, gameStarted, score }: GameCont
             <Button 
               variant="secondary"
               onClick={() => onMove('right')}
-              className="aspect-square"
+              className="aspect-square w-16 h-16 text-2xl"
             >
               →
             </Button>

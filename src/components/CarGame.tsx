@@ -182,7 +182,8 @@ const GameBoard = ({ size = 10 }: { size?: number }) => {
         className="grid gap-1 bg-secondary/30 p-4 rounded-lg border border-border"
         style={{ 
           gridTemplateColumns: `repeat(${size}, 1fr)`,
-          width: 'min(100%, 400px)'
+          width: 'min(100%, 500px)', // Increased from 400px to 500px
+          height: 'min(100vw, 500px)' // Added height to maintain aspect ratio
         }}
       >
         {grid.map((row, rowIndex) => 
@@ -201,8 +202,15 @@ const GameBoard = ({ size = 10 }: { size?: number }) => {
               >
                 {obstacle && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-xl animate-bounce text-pink-300">
+                    <div className="text-2xl animate-bounce text-pink-300 crab-walk">
                       🦀
+                    </div>
+                  </div>
+                )}
+                {isCar && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-lg">
+                      🚗
                     </div>
                   </div>
                 )}
@@ -239,7 +247,7 @@ const CarGame = () => {
           </p>
         </div>
 
-        <div className="max-w-lg mx-auto">
+        <div className="max-w-2xl mx-auto"> <!-- Increased from max-w-lg to max-w-2xl -->
           <Card className="bg-card/50 backdrop-blur-sm border border-border overflow-hidden">
             <CardHeader>
               <CardTitle>Crab Dodge</CardTitle>
@@ -248,7 +256,7 @@ const CarGame = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex justify-center">
-              <GameBoard size={8} />
+              <GameBoard size={10} /> <!-- Increased from 8 to 10 -->
             </CardContent>
           </Card>
         </div>
