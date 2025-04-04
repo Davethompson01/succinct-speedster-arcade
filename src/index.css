@@ -93,6 +93,22 @@
     animation: float 4s ease-in-out infinite;
   }
 
+  @keyframes crabWalk {
+    0% {
+      transform: translateX(-3px) rotate(-5deg);
+    }
+    50% {
+      transform: translateX(3px) rotate(5deg);
+    }
+    100% {
+      transform: translateX(-3px) rotate(-5deg);
+    }
+  }
+
+  .crab-walk {
+    animation: crabWalk 1s infinite;
+  }
+
   @keyframes shine {
     from {
       background-position: 200% 0;

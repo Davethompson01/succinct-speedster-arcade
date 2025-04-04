@@ -12,6 +12,7 @@ interface Position {
 interface Obstacle {
   id: number;
   position: Position;
+  moveDirection: 'left' | 'right';
 }
 
 const GameBoard = ({ size = 10 }: { size?: number }) => {
@@ -33,7 +34,8 @@ const GameBoard = ({ size = 10 }: { size?: number }) => {
     const newObstacleX = Math.floor(Math.random() * size);
     const newObstacle = { 
       id: obstacleIdRef.current++, 
-      position: { x: newObstacleX, y: 0 } 
+      position: { x: newObstacleX, y: 0 },
+      moveDirection: Math.random() > 0.5 ? 'left' : 'right'
     };
     
     setObstacles(prev => [...prev, newObstacle]);
@@ -41,14 +43,27 @@ const GameBoard = ({ size = 10 }: { size?: number }) => {
 
   const moveObstacles = () => {
     setObstacles(prev => {
-      // Move obstacles down
-      const movedObstacles = prev.map(obstacle => ({
-        ...obstacle,
-        position: {
-          ...obstacle.position,
-          y: obstacle.position.y + 1
+      // Move obstacles down and sideways based on their direction
+      const movedObstacles = prev.map(obstacle => {
+        let newX = obstacle.position.x;
+        
+        // Occasionally move the crab left or right
+        if (Math.random() < 0.3) {
+          if (obstacle.moveDirection === 'left' && newX > 0) {
+            newX -= 1;
+          } else if (obstacle.moveDirection === 'right' && newX < size - 1) {
+            newX += 1;
+          }
         }
-      }));
+        
+        return {
+          ...obstacle,
+          position: {
+            x: newX,
+            y: obstacle.position.y + 1
+          }
+        };
+      });
       
       // Remove obstacles that go off the board
       return movedObstacles.filter(obs => obs.position.y < size);
@@ -177,11 +192,19 @@ const GameBoard = ({ size = 10 }: { size?: number }) => {
               <div
                 key={`${rowIndex}-${colIndex}`}
                 className={`
-                  aspect-square rounded-sm 
-                  ${isCar ? 'bg-primary' : obstacle ? 'bg-destructive' : 'bg-secondary/50'}
+                  aspect-square rounded-sm relative
+                  ${isCar ? 'bg-primary' : 'bg-secondary/50'}
                 `}
                 style={{ width: `${100 / size}%` }}
-              />
+              >
+                {obstacle && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-xl animate-bounce text-pink-300">
+                      🦀
+                    </div>
+                  </div>
+                )}
+              </div>
             );
           })
         )}
@@ -209,7 +232,7 @@ const CarGame = () => {
             </span>
           </h2>
           <p className="text-muted-foreground">
-            Test your reflexes with our simple car racing game. Avoid obstacles, 
+            Test your reflexes with our simple car racing game. Avoid the crabs, 
             collect points, and see how long you can last as the speed increases!
           </p>
         </div>
@@ -217,9 +240,9 @@ const CarGame = () => {
         <div className="max-w-lg mx-auto">
           <Card className="bg-card/50 backdrop-blur-sm border border-border overflow-hidden">
             <CardHeader>
-              <CardTitle>Car Game</CardTitle>
+              <CardTitle>Crab Dodge</CardTitle>
               <CardDescription>
-                Use arrow keys or buttons to move your car and avoid obstacles
+                Use arrow keys or buttons to move your car and avoid the crabs
               </CardDescription>
             </CardHeader>
             <CardContent className="flex justify-center">
