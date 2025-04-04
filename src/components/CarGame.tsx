@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
@@ -196,13 +195,13 @@ const GameBoard = ({ size = 10 }: { size?: number }) => {
                 key={`${rowIndex}-${colIndex}`}
                 className={`
                   aspect-square rounded-sm relative
-                  ${isCar ? 'bg-primary' : 'bg-secondary/50'}
+                  ${isCar ? 'bg-succinct-pink' : 'bg-secondary/50'}
                 `}
                 style={{ width: `${100 / size}%` }}
               >
                 {obstacle && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-2xl animate-bounce text-pink-300 crab-walk">
+                    <div className="text-2xl animate-bounce text-succinct-lightpink crab-walk">
                       🦀
                     </div>
                   </div>
@@ -237,7 +236,7 @@ const CarGame = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-succinct-pink to-succinct-lightpink bg-clip-text text-transparent">
               Succinct Speedster Arcade
             </span>
           </h2>

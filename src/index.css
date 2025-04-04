@@ -14,7 +14,7 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 252 95% 85%;
+    --primary: 326 100% 50%;  /* Updated to match magenta pink */
     --primary-foreground: 240 5.9% 10%;
 
     --secondary: 240 3.7% 15.9%;
@@ -23,7 +23,7 @@
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
 
-    --accent: 262 83% 58%;
+    --accent: 330 100% 50%;  /* Slightly different hue for accent */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -46,7 +46,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 252 95% 85%;
+    --primary: 326 100% 50%;  /* Updated to match magenta pink */
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -55,7 +55,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 262 83% 58%;
+    --accent: 330 100% 50%;  /* Slightly different hue for accent */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -77,53 +77,21 @@
     font-family: 'Inter', sans-serif;
   }
 
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
+  /* ... keep existing code */
+
+  /* Add styles for the Succinct logo */
+  .succinct-logo {
+    height: 40px;
+    width: auto;
   }
 
-  .float {
-    animation: float 4s ease-in-out infinite;
-  }
-
-  @keyframes crabWalk {
-    0% {
-      transform: translateX(-3px) rotate(-5deg);
-    }
-    50% {
-      transform: translateX(3px) rotate(5deg);
-    }
-    100% {
-      transform: translateX(-3px) rotate(-5deg);
-    }
-  }
-
-  .crab-walk {
-    animation: crabWalk 1s infinite;
-  }
-
-  @keyframes shine {
-    from {
-      background-position: 200% 0;
-    }
-    to {
-      background-position: -200% 0;
-    }
-  }
-
+  /* Update animation for shiny-text to use the new pink colors */
   .shiny-text {
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(255, 255, 255, 0.7) 20%,
-      rgba(255, 255, 255, 0.2) 40%
+      rgba(255, 177, 230, 0.3) 0%,
+      rgba(255, 0, 184, 0.7) 25%,
+      rgba(255, 177, 230, 0.3) 50%
     );
     background-size: 200% auto;
     background-clip: text;

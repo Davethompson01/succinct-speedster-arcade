@@ -40,7 +40,7 @@ const About = () => {
           {features.map((feature, index) => (
             <Card key={index} className="bg-card/50 backdrop-blur-sm border border-border">
               <CardHeader>
-                <CardTitle className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <CardTitle className="text-xl font-bold bg-gradient-to-r from-succinct-pink to-succinct-lightpink bg-clip-text text-transparent">
                   {feature.title}
                 </CardTitle>
               </CardHeader>
@@ -50,7 +50,7 @@ const About = () => {
                 </CardDescription>
               </CardContent>
               <CardFooter>
-                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10">
+                <Button asChild variant="outline" className="w-full border-succinct-pink text-succinct-pink hover:bg-succinct-pink/10">
                   <a href={feature.buttonUrl} target="_blank" rel="noopener noreferrer">
                     {feature.buttonText}
                   </a>
@@ -62,7 +62,7 @@ const About = () => {
 
         <div className="mt-20 text-center">
           <h3 className="text-2xl font-bold mb-6">Connect With Our Community</h3>
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/80 text-white">
+          <Button asChild size="lg" className="bg-succinct-pink hover:bg-succinct-pink/80 text-white">
             <a href="https://x.com/SuccinctLabs" target="_blank" rel="noopener noreferrer">
               Follow on X (Twitter)
             </a>
